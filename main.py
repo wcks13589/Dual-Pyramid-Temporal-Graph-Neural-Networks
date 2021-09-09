@@ -1,5 +1,4 @@
 import argparse
-import argparse
 import numpy as np
 from tqdm import trange
 
@@ -23,8 +22,6 @@ parser.add_argument('--shop_col', type=str, default='stonc_6_label')
 parser.add_argument('--static_model', dest='static_model', action='store_true', default=False)
 
 args = parser.parse_args()
-
-
 
 def train():
     
@@ -73,7 +70,6 @@ def train():
     else:
         return np.mean(weight_loss_)
 
-
 def test(stride, months):
     
     weight_loss_ = []
@@ -121,8 +117,6 @@ def test(stride, months):
         return np.mean(weight_loss_), np.mean(user_loss_), np.mean(state_auc_),
     else:
         return np.mean(weight_loss_), np.mean(user_loss_)
-
-
 
 def main(args):
     
@@ -212,16 +206,5 @@ def main(args):
             
         print(*output)
         
-
 if __name__ == '__main__':
     main(args)
-    
-
-        
-        
-    
-        
-    
-
-
-

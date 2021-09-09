@@ -5,7 +5,6 @@ import torch
 from torch_geometric.utils import is_undirected
 from utils.utils import read_sample_files
 
-
 class Graph():
     def __init__(self, shop_col):
     
@@ -108,4 +107,4 @@ class Graph():
             
             activate_state.append(torch.cat([cust, shop],0))
             
-        return activate_state
+        return activate_statex
