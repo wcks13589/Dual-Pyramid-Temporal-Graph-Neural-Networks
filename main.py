@@ -23,7 +23,7 @@ parser.add_argument('--static_model', dest='static_model', action='store_true', 
 
 args = parser.parse_args()
 
-def train():
+def train(args, data, model, training_stride, optimizer, criterion):
     
     weight_loss_ = []
     if args.dual:
@@ -70,7 +70,7 @@ def train():
     else:
         return np.mean(weight_loss_)
 
-def test(stride, months):
+def test(args, data, model, stride, months):
     
     weight_loss_ = []
     if args.dual:
@@ -192,9 +192,9 @@ def main(args):
 
     for epoch in range(epochs):
         print(f'epoch:{epoch+1}')
-        loss = train()
+        loss = train(args, data, model, training_stride, optimizer, criterion)
         
-        val_metric = list(test(training_stride, val_months))
+        val_metric = list(test(args, data, model, stride, months, training_stride, val_months))
         
         metrics = ['RMSE','User_Loss']
         if args.dual:
